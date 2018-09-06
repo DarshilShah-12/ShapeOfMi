@@ -14,7 +14,7 @@
 
     <TextView
         android:id="@+id/text_Counter"
-        android:text="@{text_Counter}"
+        android:text="@{ViewModel.text_Counter}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

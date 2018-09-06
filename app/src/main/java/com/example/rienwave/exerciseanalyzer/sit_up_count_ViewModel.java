@@ -18,7 +18,7 @@ public class sit_up_count_ViewModel extends AppCompatActivity implements SensorE
 
     public Values accelerationVal;
     public Values gyroVal;
-    private String text_Counter;
+    public String text_Counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
