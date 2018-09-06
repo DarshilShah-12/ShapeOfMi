@@ -10,14 +10,12 @@ import android.os.Bundle;
 
 import com.example.rienwave.exerciseanalyzer.databinding.SitUpCountViewBinding;
 
-import java.util.ArrayList;
-
 public class sit_up_count_ViewModel extends AppCompatActivity implements SensorEventListener{
 
     SitUpCountViewBinding mainBinding;
 
-    public Values accelerationVal;
-    public Values gyroVal;
+    public sit_up_count_Model accelerationVal;
+    public sit_up_count_Model gyroVal;
     public String text_Counter;
 
     @Override
@@ -27,7 +25,7 @@ public class sit_up_count_ViewModel extends AppCompatActivity implements SensorE
         Initialize();
     }
     private void Initialize(){
-        accelerationVal = new Values();
+        accelerationVal = new sit_up_count_Model();
         mainBinding = DataBindingUtil.setContentView(this, R.layout.sit_up_count_view);
         mainBinding.setViewModel(this);
 
@@ -57,7 +55,7 @@ public class sit_up_count_ViewModel extends AppCompatActivity implements SensorE
         }
     }
 
-    public Values Analyze (Values values){
+    public sit_up_count_Model Analyze (sit_up_count_Model values){
 
         // ToDO determine if text_Counter needs to be incremented
         // TODO clear the ArrayLIst with every new sit-up

@@ -3,9 +3,9 @@ package com.example.rienwave.exerciseanalyzer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Values {
+public class sit_up_count_Model {
 
-    Values(){
+    sit_up_count_Model(){
         init();
     }
 
