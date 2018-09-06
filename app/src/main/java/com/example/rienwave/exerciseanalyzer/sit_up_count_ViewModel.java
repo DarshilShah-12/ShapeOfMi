@@ -26,6 +26,7 @@ public class sit_up_count_ViewModel extends AppCompatActivity implements SensorE
     }
     private void Initialize(){
         accelerationVal = new sit_up_count_Model();
+        gyroVal = new sit_up_count_Model();
         mainBinding = DataBindingUtil.setContentView(this, R.layout.sit_up_count_view);
         mainBinding.setViewModel(this);
 
@@ -41,6 +42,7 @@ public class sit_up_count_ViewModel extends AppCompatActivity implements SensorE
     @Override
     public void onSensorChanged(SensorEvent event) {
         Sensor sensor = event.sensor;
+
         if (sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             accelerationVal.xVal.add((double)Math.round(event.values[0] * 100d) / 100d);
             accelerationVal.yVal.add((double)Math.round(event.values[1] * 100d) / 100d);
@@ -59,7 +61,6 @@ public class sit_up_count_ViewModel extends AppCompatActivity implements SensorE
 
         // ToDO determine if text_Counter needs to be incremented
         // TODO clear the ArrayLIst with every new sit-up
-
         return values;
     }
 
