@@ -1,72 +1,57 @@
 package com.example.rienwave.exerciseanalyzer;
 
-import android.databinding.DataBindingUtil;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.content.Context;
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 
-import com.example.rienwave.exerciseanalyzer.databinding.SitUpCountViewBinding;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
-public class sit_up_count_ViewModel extends AppCompatActivity implements SensorEventListener{
+public class sit_up_count_ViewModel extends BaseObservable {
 
-    SitUpCountViewBinding mainBinding;
+    private String text_Counter;
+    private String StartStopbtnText;
 
-    public sit_up_count_Model accelerationVal;
-    public sit_up_count_Model gyroVal;
-    public String text_Counter;
+    private sit_up_count_Model sitUpCountModel;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.sit_up_count_view);
-        Initialize();
-    }
-    private void Initialize(){
-        accelerationVal = new sit_up_count_Model();
-        gyroVal = new sit_up_count_Model();
-        mainBinding = DataBindingUtil.setContentView(this, R.layout.sit_up_count_view);
-        mainBinding.setViewModel(this);
-
-        SensorManager asensorM = (SensorManager) getSystemService(SENSOR_SERVICE);
-        Sensor asensor = asensorM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        asensorM.registerListener(this, asensor, SensorManager.SENSOR_DELAY_NORMAL);
-
-        SensorManager gsensorM = (SensorManager) getSystemService(SENSOR_SERVICE);
-        Sensor gSensor = gsensorM.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
-        gsensorM.registerListener(this, gSensor, SensorManager.SENSOR_DELAY_NORMAL);
+    public sit_up_count_ViewModel(Context context){
+        sitUpCountModel = new sit_up_count_Model(context);
+        StartStopbtnText = sitUpCountModel.getHasStarted()? "Stop":"Start";
+        text_Counter = Integer.toString(sitUpCountModel.getCounter());
+        EventBus.getDefault().register(this);
     };
 
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        Sensor sensor = event.sensor;
-
-        if (sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            accelerationVal.xVal.add((double)Math.round(event.values[0] * 100d) / 100d);
-            accelerationVal.yVal.add((double)Math.round(event.values[1] * 100d) / 100d);
-            accelerationVal.zVal.add((double)Math.round(event.values[2] * 100d) / 100d);
-            accelerationVal = Analyze(accelerationVal);
-        }
-        else if (sensor.getType() == Sensor.TYPE_GYROSCOPE) {
-            gyroVal.xVal.add((double)Math.round(event.values[0] * 100d) / 100d);
-            gyroVal.yVal.add((double)Math.round(event.values[0] * 100d) / 100d);
-            gyroVal.zVal.add((double)Math.round(event.values[0] * 100d) / 100d);
-            gyroVal = Analyze(gyroVal);
-        }
+    @Subscribe
+    public void onCounterChanged(ValueChangedEvent event){
+        setText_Counter(event.getValue());
     }
 
-    public sit_up_count_Model Analyze (sit_up_count_Model values){
+    public void onStartStopClicked(){
+        //testing
+        //sitUpCountModel.IncrementCounter();
+        //setText_Counter(""+(sitUpCountModel.counter));
 
-        // ToDO determine if text_Counter needs to be incremented
-        // TODO clear the ArrayLIst with every new sit-up
-        return values;
+        sitUpCountModel.onStartStopClicked();
+        setStartStopbtnText(sitUpCountModel.getHasStarted() ? "Stop" : "Start");
     }
 
+    @Bindable
+    public String getText_Counter() {
+        return text_Counter;
+    }
 
+    public void setText_Counter(String text_Counter) {
+        this.text_Counter = text_Counter;
+        notifyPropertyChanged(BR.text_Counter);
+    }
 
-    // Not Implemented
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
+    @Bindable
+    public String getStartStopbtnText() {
+        return StartStopbtnText;
+    }
+
+    public void setStartStopbtnText(String startStopbtnText) {
+        StartStopbtnText = startStopbtnText;
+        notifyPropertyChanged(BR.startStopbtnText);
+    }
 }

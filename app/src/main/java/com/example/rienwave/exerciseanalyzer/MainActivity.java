@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import com.example.rienwave.exerciseanalyzer.databinding.ActivityMainBinding;
@@ -21,14 +20,21 @@ public class MainActivity extends AppCompatActivity {
         initialize();
     }
 
+
     public void initialize(){
         setContentView(R.layout.activity_main);
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mainBinding.setViewModel(this);
     }
 
-    public void onbtnNextClick() {
-        Intent Invoker = new Intent(MainActivity.this, sit_up_count_ViewModel.class);
+    // To Do: move to VM
+
+    public void onbtnTrackerClick() {
+        Intent Invoker = new Intent(MainActivity.this, sit_up_count_Activity.class);
         startActivity(Invoker);
+    }
+
+    public void onbtnTrendsClick() {
+        // not implemented
     }
 }
