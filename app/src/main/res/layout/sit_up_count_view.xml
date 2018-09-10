@@ -6,7 +6,7 @@
 
         <variable
             name="ViewModel"
-            type="com.example.rienwave.exerciseanalyzer.sit_up_count_ViewModel" />
+            type="com.example.rienwave.exerciseanalyzer.ViewModel.sit_up_count_ViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout

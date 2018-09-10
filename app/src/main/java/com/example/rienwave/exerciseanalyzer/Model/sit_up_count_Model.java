@@ -1,10 +1,12 @@
-package com.example.rienwave.exerciseanalyzer;
+package com.example.rienwave.exerciseanalyzer.Model;
 
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+
+import com.example.rienwave.exerciseanalyzer.CounterChangedEvent;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -35,7 +37,7 @@ public class sit_up_count_Model extends Observable implements SensorEventListene
     public Boolean hasStarted;
 
 
-    sit_up_count_Model(Context context){
+    public sit_up_count_Model(Context context){
         init(context);
     }
 
@@ -67,7 +69,7 @@ public class sit_up_count_Model extends Observable implements SensorEventListene
 
     public void setCounter(int counter) {
         this.counter = counter;
-        ValueChangedEvent event = new ValueChangedEvent();
+        CounterChangedEvent event = new CounterChangedEvent();
         event.setValue("" + this.counter);
         EventBus.getDefault().post(event);
     }

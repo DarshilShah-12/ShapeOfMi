@@ -6,13 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.example.rienwave.exerciseanalyzer.ViewModel.MainActivityViewModel;
 import com.example.rienwave.exerciseanalyzer.databinding.ActivityMainBinding;
 
 
 //VM for activity_main
 public class MainActivity extends AppCompatActivity {
-    Button btnMainTemp;
+
     ActivityMainBinding mainBinding;
+    MainActivityViewModel mainActivityViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
     public void initialize(){
         setContentView(R.layout.activity_main);
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        mainBinding.setViewModel(this);
+
+        mainActivityViewModel = new MainActivityViewModel(this);
+        mainBinding.setViewModel(mainActivityViewModel);
     }
 
     // To Do: move to VM

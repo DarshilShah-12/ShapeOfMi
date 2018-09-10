@@ -4,7 +4,7 @@
     <data>
         <variable
             name="ViewModel"
-            type="com.example.rienwave.exerciseanalyzer.MainActivity" />
+            type="com.example.rienwave.exerciseanalyzer.ViewModel.MainActivityViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

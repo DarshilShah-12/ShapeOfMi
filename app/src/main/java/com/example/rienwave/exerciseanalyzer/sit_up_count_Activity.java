@@ -1,10 +1,10 @@
 package com.example.rienwave.exerciseanalyzer;
 
-import android.databinding.BaseObservable;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.rienwave.exerciseanalyzer.ViewModel.sit_up_count_ViewModel;
 import com.example.rienwave.exerciseanalyzer.databinding.SitUpCountViewBinding;
 
 public class sit_up_count_Activity extends AppCompatActivity {

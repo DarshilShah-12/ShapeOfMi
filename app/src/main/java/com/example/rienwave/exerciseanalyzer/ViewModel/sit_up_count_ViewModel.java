@@ -1,8 +1,12 @@
-package com.example.rienwave.exerciseanalyzer;
+package com.example.rienwave.exerciseanalyzer.ViewModel;
 
 import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+
+import com.example.rienwave.exerciseanalyzer.BR;
+import com.example.rienwave.exerciseanalyzer.CounterChangedEvent;
+import com.example.rienwave.exerciseanalyzer.Model.sit_up_count_Model;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -22,7 +26,7 @@ public class sit_up_count_ViewModel extends BaseObservable {
     };
 
     @Subscribe
-    public void onCounterChanged(ValueChangedEvent event){
+    public void onCounterChanged(CounterChangedEvent event){
         setText_Counter(event.getValue());
     }
 
