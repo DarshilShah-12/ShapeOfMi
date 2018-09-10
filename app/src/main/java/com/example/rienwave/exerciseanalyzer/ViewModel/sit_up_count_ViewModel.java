@@ -15,10 +15,12 @@ public class sit_up_count_ViewModel extends BaseObservable {
 
     private String text_Counter;
     private String StartStopbtnText;
+    private Context PreviousContext;
 
     private sit_up_count_Model sitUpCountModel;
 
     public sit_up_count_ViewModel(Context context){
+        PreviousContext = context;
         sitUpCountModel = new sit_up_count_Model(context);
         StartStopbtnText = sitUpCountModel.getHasStarted()? "Stop":"Start";
         text_Counter = Integer.toString(sitUpCountModel.getCounter());
@@ -30,13 +32,17 @@ public class sit_up_count_ViewModel extends BaseObservable {
         setText_Counter(event.getValue());
     }
 
-    public void onStartStopClicked(){
+    public void onStartStopClick(){
         //testing
         //sitUpCountModel.IncrementCounter();
         //setText_Counter(""+(sitUpCountModel.counter));
-
-        sitUpCountModel.onStartStopClicked();
+        sitUpCountModel.onStartStopClick();
         setStartStopbtnText(sitUpCountModel.getHasStarted() ? "Stop" : "Start");
+    }
+
+    // TO DO hook up a onBackClickEvent
+    public void onBackButtonClick(){
+        //finishActivity();
     }
 
     @Bindable

@@ -7,6 +7,9 @@ import android.os.Bundle;
 import com.example.rienwave.exerciseanalyzer.ViewModel.sit_up_count_ViewModel;
 import com.example.rienwave.exerciseanalyzer.databinding.SitUpCountViewBinding;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 public class sit_up_count_Activity extends AppCompatActivity {
 
     SitUpCountViewBinding mainBinding;
@@ -30,6 +33,14 @@ public class sit_up_count_Activity extends AppCompatActivity {
 
         mainBinding = DataBindingUtil.setContentView(this, R.layout.sit_up_count_view);
         mainBinding.setViewModel(StiUpCountViewModel);
+
+        EventBus.getDefault().register(this);
     }
 
+    /*
+    // go back to previous activity when a backButtonClick event is raised from the view model
+    @Subscribe
+    public void onBack(onBackClickEvent event){
+    }
+    */
 }

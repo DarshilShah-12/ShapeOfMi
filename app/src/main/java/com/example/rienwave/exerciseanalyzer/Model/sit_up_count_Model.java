@@ -12,11 +12,10 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
 import static android.content.Context.SENSOR_SERVICE;
 
-public class sit_up_count_Model extends Observable implements SensorEventListener{
+public class sit_up_count_Model implements SensorEventListener{
 
     public List<Double> AxVal;
     public List<Double> AyVal;
@@ -111,23 +110,22 @@ public class sit_up_count_Model extends Observable implements SensorEventListene
         // ToDO determine if text_Counter needs to be incremented
         // TODO clear the ArrayLIst with every new sit-up
 
-
         // testing purposes only, should be bounded by if statements
         IncrementCounter();
     }
 
-    public void onStartStopClicked(){
+    public void onStartStopClick(){
         if (hasStarted){
             asensorM.unregisterListener(this);
             gsensorM.unregisterListener(this);
         }
         else {
-            asensorM.registerListener(this, aSensor, SensorManager.SENSOR_DELAY_NORMAL);
-            gsensorM.registerListener(this, gSensor, SensorManager.SENSOR_DELAY_NORMAL);
+            // SENSOR_DELAY_FASTEST (0 microsecond delay).
+            asensorM.registerListener(this, aSensor, SensorManager.SENSOR_DELAY_FASTEST);
+            gsensorM.registerListener(this, gSensor, SensorManager.SENSOR_DELAY_FASTEST);
         }
         hasStarted = !hasStarted;
     }
-
 
     // not applicable
     @Override
