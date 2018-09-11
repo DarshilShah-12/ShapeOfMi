@@ -5,8 +5,9 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.example.rienwave.exerciseanalyzer.BR;
-import com.example.rienwave.exerciseanalyzer.CounterChangedEvent;
+import com.example.rienwave.exerciseanalyzer.Events.CounterChangedEvent;
 import com.example.rienwave.exerciseanalyzer.Model.sit_up_count_Model;
+import com.example.rienwave.exerciseanalyzer.Events.onBackClickEvent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -42,6 +43,8 @@ public class sit_up_count_ViewModel extends BaseObservable {
 
     // TO DO hook up a onBackClickEvent
     public void onBackButtonClick(){
+        onBackClickEvent event = new onBackClickEvent();
+        EventBus.getDefault().post(event);
         //finishActivity();
     }
 

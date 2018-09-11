@@ -6,7 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-import com.example.rienwave.exerciseanalyzer.CounterChangedEvent;
+import com.example.rienwave.exerciseanalyzer.Events.CounterChangedEvent;
 
 import org.greenrobot.eventbus.EventBus;
 

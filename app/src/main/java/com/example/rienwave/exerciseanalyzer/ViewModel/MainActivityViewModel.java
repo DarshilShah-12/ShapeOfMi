@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
 
-import com.example.rienwave.exerciseanalyzer.sit_up_count_Activity;
+import com.example.rienwave.exerciseanalyzer.Activities.sit_up_count_Activity;
 
 
 public class MainActivityViewModel extends BaseObservable {
@@ -23,5 +23,4 @@ public class MainActivityViewModel extends BaseObservable {
         public void onbtnTrendsClick() {
             // not implemented
         }
-
 }

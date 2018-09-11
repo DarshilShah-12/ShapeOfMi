@@ -1,4 +1,4 @@
-package com.example.rienwave.exerciseanalyzer;
+package com.example.rienwave.exerciseanalyzer.Activities;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.example.rienwave.exerciseanalyzer.R;
 import com.example.rienwave.exerciseanalyzer.ViewModel.MainActivityViewModel;
 import com.example.rienwave.exerciseanalyzer.databinding.ActivityMainBinding;
 
@@ -29,16 +30,5 @@ public class MainActivity extends AppCompatActivity {
 
         mainActivityViewModel = new MainActivityViewModel(this);
         mainBinding.setViewModel(mainActivityViewModel);
-    }
-
-    // To Do: move to VM
-
-    public void onbtnTrackerClick() {
-        Intent Invoker = new Intent(MainActivity.this, sit_up_count_Activity.class);
-        startActivity(Invoker);
-    }
-
-    public void onbtnTrendsClick() {
-        // not implemented
     }
 }
