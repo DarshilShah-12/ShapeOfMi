@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         initialize();
     }
 
-
     public void initialize(){
         setContentView(R.layout.activity_main);
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);

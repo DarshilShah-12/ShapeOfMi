@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.BaseObservable;
 
 import com.example.rienwave.exerciseanalyzer.Activities.sit_up_count_Activity;
+import com.example.rienwave.exerciseanalyzer.Activities.trends_Activity;
 
 
 public class MainActivityViewModel extends BaseObservable {
@@ -21,6 +22,7 @@ public class MainActivityViewModel extends BaseObservable {
         }
 
         public void onbtnTrendsClick() {
-            // not implemented
+            Intent Invoker = new Intent(ActivityContext, trends_Activity.class);
+            ActivityContext.startActivity(Invoker);
         }
 }
