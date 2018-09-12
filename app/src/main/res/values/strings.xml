@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ExerciseAnalyzer</string>
+    <string name="onBackClickEvent">onBackClickEvent</string>
+    <string name="onTrendsClickEvent">onTrendsClickEvent</string>
 </resources>

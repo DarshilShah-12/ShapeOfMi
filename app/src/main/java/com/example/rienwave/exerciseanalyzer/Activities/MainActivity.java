@@ -30,4 +30,5 @@ public class MainActivity extends AppCompatActivity {
         mainActivityViewModel = new MainActivityViewModel(this);
         mainBinding.setViewModel(mainActivityViewModel);
     }
+
 }
