@@ -1,11 +1,13 @@
 package com.example.rienwave.exerciseanalyzer.ViewModel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.BaseObservable;
 
-import com.example.rienwave.exerciseanalyzer.Events.onActivityChangeEvent;
+import com.example.rienwave.exerciseanalyzer.Activities.sit_up_count_Activity;
+import com.example.rienwave.exerciseanalyzer.Events.onTrackerBackClickiEvent;
+import com.example.rienwave.exerciseanalyzer.Events.onTrendsBackClickEvent;
 import com.example.rienwave.exerciseanalyzer.Model.trends_Model;
-import com.example.rienwave.exerciseanalyzer.R;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -33,12 +35,12 @@ public class trends_ViewModel extends BaseObservable{
     }
 
     public void onBackButtonClick(){
-        onActivityChangeEvent event = new onActivityChangeEvent(""+R.string.onBackClickEvent);
+        onTrendsBackClickEvent event = new onTrendsBackClickEvent();
         EventBus.getDefault().post(event);
     }
 
     public void onTrackerButtonClick(){
-        onActivityChangeEvent event = new onActivityChangeEvent(""+R.string.onTrendsClickEvent);
-        EventBus.getDefault().post(event);
+        Intent Invoker = new Intent(ActivityContext, sit_up_count_Activity.class);
+        ActivityContext.startActivity(Invoker);
     }
 }

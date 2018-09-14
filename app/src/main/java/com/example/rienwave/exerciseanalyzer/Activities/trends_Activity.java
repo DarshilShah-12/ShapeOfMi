@@ -4,7 +4,8 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.rienwave.exerciseanalyzer.Events.onActivityChangeEvent;
+import com.example.rienwave.exerciseanalyzer.Events.onTrackerBackClickiEvent;
+import com.example.rienwave.exerciseanalyzer.Events.onTrendsBackClickEvent;
 import com.example.rienwave.exerciseanalyzer.R;
 import com.example.rienwave.exerciseanalyzer.ViewModel.trends_ViewModel;
 import com.jjoe64.graphview.GraphView;
@@ -39,8 +40,7 @@ public class trends_Activity extends AppCompatActivity {
     }
 
     @Subscribe
-    public void onBack(onActivityChangeEvent event){
+    public void onBack(onTrendsBackClickEvent event){
         super.onBackPressed();
-        //((Activity)this).finish();
     }
 }

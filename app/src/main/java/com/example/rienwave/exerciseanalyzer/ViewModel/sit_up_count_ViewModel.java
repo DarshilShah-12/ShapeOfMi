@@ -7,7 +7,7 @@ import android.databinding.Bindable;
 import com.example.rienwave.exerciseanalyzer.BR;
 import com.example.rienwave.exerciseanalyzer.Events.CounterChangedEvent;
 import com.example.rienwave.exerciseanalyzer.Model.sit_up_count_Model;
-import com.example.rienwave.exerciseanalyzer.Events.onActivityChangeEvent;
+import com.example.rienwave.exerciseanalyzer.Events.onTrackerBackClickiEvent;
 import com.example.rienwave.exerciseanalyzer.R;
 
 import org.greenrobot.eventbus.EventBus;
@@ -35,15 +35,12 @@ public class sit_up_count_ViewModel extends BaseObservable {
     }
 
     public void onStartStopClick(){
-        //testing
-        //sitUpCountModel.IncrementCounter();
-        //setText_Counter(""+(sitUpCountModel.counter));
         sitUpCountModel.onStartStopClick();
         setStartStopbtnText(sitUpCountModel.getHasStarted() ? "Stop" : "Start");
     }
 
     public void onBackButtonClick(){
-        onActivityChangeEvent event = new onActivityChangeEvent(""+ R.string.onBackClickEvent);
+        onTrackerBackClickiEvent event = new onTrackerBackClickiEvent();
         EventBus.getDefault().post(event);
     }
 
