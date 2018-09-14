@@ -110,8 +110,26 @@ public class sit_up_count_Model implements SensorEventListener{
         // ToDO determine if text_Counter needs to be incremented
         // TODO clear the ArrayLIst with every new sit-up
 
+
+        double avZ=0;
+        if (AzVal.size()==500){
+            for (int i=0; i<AzVal.size(); i++){
+                avZ+=AzVal.get(i);
+            }
+
+            avZ/=AzVal.size();
+
+            if (avZ<9.8){
+                IncrementCounter();
+            }
+
+            AzVal.clear();
+        }
+
+
+
         // testing purposes only, should be bounded by if statements
-        IncrementCounter();
+
     }
 
     public void onStartStopClick(){
