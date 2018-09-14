@@ -94,24 +94,69 @@ public class sit_up_count_Model implements SensorEventListener{
             AxVal.add((double)Math.round(event.values[0] * 100d) / 100d);
             AyVal.add((double)Math.round(event.values[1] * 100d) / 100d);
             AzVal.add((double)Math.round(event.values[2] * 100d) / 100d);
-            Analyze();
+            Analyze2();
         }
         else if (sensor.getType() == Sensor.TYPE_GYROSCOPE) {
             GxVal.add((double)Math.round(event.values[0] * 100d) / 100d);
             GyVal.add((double)Math.round(event.values[1] * 100d) / 100d);
             GzVal.add((double)Math.round(event.values[2] * 100d) / 100d);
-            Analyze();
+            Analyze2();
         }
     }
 
 
     private void Analyze (){
-
         // ToDO determine if text_Counter needs to be incremented
         // TODO clear the ArrayLIst with every new sit-up
 
         // testing purposes only, should be bounded by if statements
         IncrementCounter();
+    }
+
+    private void Analyze2 (){
+        if (AxVal.size() >= 50 || AyVal.size() >= 50 || AzVal.size() >= 50){
+        if (isOppositeSign(average(0, 24, 'x'),average(25, 50, 'x')) || isOppositeSign(average(0, 24, 'y'),average(25, 50, 'y')) || isOppositeSign(average(0, 24, 'z'),average(25, 50, 'z')))
+        {
+            IncrementCounter();
+        }
+    }
+
+        // ToDO determine if text_Counter needs to be incremented
+        // TODO clear the ArrayLIst with every new sit-up
+
+        // testing purposes only, should be bounded by if statements
+    }
+
+    private double average(int indexOne, int indexTwo, char xyz){
+        double average = 0.0;
+        switch (xyz){
+            case 'x':
+                for (int i = indexOne; i <= indexTwo; i++){
+                    average += AxVal.get(i);
+                }
+                return average/(indexTwo-indexOne+1);
+
+
+                case 'y':
+                for (int i = indexOne; i <= indexTwo; i++){
+                    average += AyVal.get(i);
+                }
+                return average/(indexTwo-indexOne+1);
+
+            case 'z':
+                for (int i = indexOne; i <= indexTwo; i++){
+                    average += AyVal.get(i);
+                }
+            return average/(indexTwo-indexOne+1);
+
+                default:
+                    return -1.0;
+        }
+    }
+
+    private boolean isOppositeSign(double x, double y)
+    {
+        return ((x * y) < 0);
     }
 
     public void onStartStopClick(){
