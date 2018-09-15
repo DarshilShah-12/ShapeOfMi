@@ -4,7 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.ArrayAdapter;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -92,4 +95,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else
             return true;
     }
+
+    public static int[] getData() {
+        int[] a = {1,2};
+        return a;
+    }
+
+//    public static ArrayList<ArrayList<Integer>> getSomeData() {
+//        ArrayList<Integer> inside_sample = new ArrayList<Integer>();
+//        ArrayList<Integer> inside_sample_2 = new ArrayList<Integer>();
+//        ArrayList<ArrayList<Integer>> outside_sample = new ArrayList<ArrayList<Integer>>();
+//        inside_sample.add(1);
+//        inside_sample.add(2);
+//        inside_sample_2.add(3);
+//        inside_sample_2.add(4);
+//
+//        outside_sample.add(inside_sample);
+//        outside_sample.add(inside_sample_2);
+//
+//        return outside_sample;
+//    }
 }
