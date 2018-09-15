@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.databinding.BaseObservable;
 
 import com.example.rienwave.exerciseanalyzer.Activities.sit_up_count_Activity;
-import com.example.rienwave.exerciseanalyzer.Events.onTrackerBackClickiEvent;
 import com.example.rienwave.exerciseanalyzer.Events.onTrendsBackClickEvent;
 import com.example.rienwave.exerciseanalyzer.Model.trends_Model;
 import com.jjoe64.graphview.series.DataPoint;

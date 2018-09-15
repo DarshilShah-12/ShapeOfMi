@@ -7,7 +7,7 @@
 
         <variable
             name="ViewModel"
-            type="com.example.rienwave.exerciseanalyzer.ViewModel.sit_up_count_ViewModel" />
+            type="com.example.rienwave.exerciseanalyzer.ViewModel.push_up_count_ViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -38,7 +38,7 @@
             app:layout_constraintHorizontal_bias="0.467"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_Counter"
-        app:layout_constraintVertical_bias="0.115" />
+            app:layout_constraintVertical_bias="0.115" />
 
         <Button
             android:id="@+id/btnBack"

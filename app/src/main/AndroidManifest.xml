@@ -17,7 +17,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.sit_up_count_Activity" />
-        <activity android:name=".Activities.trends_Activity"></activity>
+        <activity android:name=".Activities.trends_Activity" />
+        <activity
+            android:name=".Activities.CounterActivity"
+            android:label="@string/title_activity_counter"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

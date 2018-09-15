@@ -6,23 +6,22 @@ import android.databinding.Bindable;
 
 import com.example.rienwave.exerciseanalyzer.BR;
 import com.example.rienwave.exerciseanalyzer.Events.CounterChangedEvent;
-import com.example.rienwave.exerciseanalyzer.Model.sit_up_count_Model;
 import com.example.rienwave.exerciseanalyzer.Events.onTrackerBackClickEvent;
+import com.example.rienwave.exerciseanalyzer.Model.push_up_count_Model;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-public class sit_up_count_ViewModel extends BaseObservable {
-
+public class push_up_count_ViewModel extends BaseObservable{
     private String text_Counter;
     private String StartStopbtnText;
 
-    private sit_up_count_Model sitUpCountModel;
+    private push_up_count_Model pushUpCountModel;
 
-    public sit_up_count_ViewModel(Context context){
-        sitUpCountModel = new sit_up_count_Model(context);
-        StartStopbtnText = sitUpCountModel.getHasStarted()? "Stop":"Start";
-        text_Counter = Integer.toString(sitUpCountModel.getCounter());
+    public push_up_count_ViewModel(Context context){
+        pushUpCountModel = new push_up_count_Model(context);
+        StartStopbtnText = pushUpCountModel.getHasStarted()? "Stop":"Start";
+        text_Counter = Integer.toString(pushUpCountModel.getCounter());
         EventBus.getDefault().register(this);
     };
 
@@ -32,8 +31,8 @@ public class sit_up_count_ViewModel extends BaseObservable {
     }
 
     public void onStartStopClick(){
-        sitUpCountModel.onStartStopClick();
-        setStartStopbtnText(sitUpCountModel.getHasStarted() ? "Stop" : "Start");
+        pushUpCountModel.onStartStopClick();
+        setStartStopbtnText(pushUpCountModel.getHasStarted() ? "Stop" : "Start");
     }
 
     public void onBackButtonClick(){
