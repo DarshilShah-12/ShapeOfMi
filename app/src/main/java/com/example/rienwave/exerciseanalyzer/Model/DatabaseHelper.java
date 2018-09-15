@@ -92,10 +92,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else
             return true;
     }
-
-    public int DataTableLength() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        int num = db.rawQuery("SELECT COUNT(DATA_ID) FROM data_table");
-
-    }
 }

@@ -15,7 +15,6 @@ public class trends_Model{
     // initilzes Series based on database info
     private void InitSeries() {
         // testing only
-        for(int i = 0; i < myDb.data_table)
         SeriesAvg = new LineGraphSeries<>(new DataPoint[] {
 //                new DataPoint(0, 1),
 //                new DataPoint(1, 5),

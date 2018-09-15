@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.sql.*;
 import java.util.Date;
 
 import com.example.rienwave.exerciseanalyzer.Model.DatabaseHelper;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 //        buttonAddUser = (Button) findViewById(R.id.buttonAddUser);
 //        AddData();
         initialize();
+        selectAll();
     }
 
     public void initialize(){
@@ -75,7 +77,36 @@ public class MainActivity extends AppCompatActivity {
 
 //    }
 
-    public static DatabaseHelper getDb() {
-        return myDb.;
+    private Connection connect() {
+        // SQLite connection string
+        String url = "jdbc:sqlite:C:/Users/whats/Desktop/exercise_analyzer.db";
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return conn;
+    }
+
+    public void selectAll(){
+        String sql = "SELECT COUNT(DATA_ID) FROM data_table";
+
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+
+            // loop through the result set
+            while (rs.next()) {
+                System.out.println(rs.getInt("DATA_ID") +  "\t" +
+                        rs.getString("USER_ID") + "\t" +
+                        rs.getString("TYPE") + "\t" +
+                        rs.getString("COUNTER") + "\t" +
+                        rs.getString("TIME_ID") + "\t" +
+                        rs.getDouble("CREATED_AT"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
