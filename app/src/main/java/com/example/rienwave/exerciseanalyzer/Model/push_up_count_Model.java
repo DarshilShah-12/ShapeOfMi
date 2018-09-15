@@ -11,13 +11,11 @@ import com.example.rienwave.exerciseanalyzer.Events.CounterChangedEvent;
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static android.content.Context.SENSOR_SERVICE;
 
-public class sit_up_count_Model implements SensorEventListener{
-
+public class push_up_count_Model implements SensorEventListener {
     public List<Double> AxVal;
     public List<Double> AyVal;
     public List<Double> AzVal;
@@ -37,7 +35,7 @@ public class sit_up_count_Model implements SensorEventListener{
     public Boolean hasStarted;
 
 
-    public sit_up_count_Model(Context context){
+    public push_up_count_Model(Context context){
         init(context);
     }
 
@@ -114,9 +112,10 @@ public class sit_up_count_Model implements SensorEventListener{
         // ToDO determine if text_Counter needs to be incremented
         // TODO clear the ArrayLIst with every new sit-up
 
+        IncrementCounter();
         boolean ExType=true; //true for push up; false for situp;
-        
-    //DO NOT DELETE: PUSH UP COUNTER WORKS: -ANJALI
+
+        //DO NOT DELETE: PUSH UP COUNTER WORKS: -ANJALI
         if (ExType)
         {
             double avZ=0;
@@ -144,9 +143,6 @@ public class sit_up_count_Model implements SensorEventListener{
                 }
             }
         }
-
-
-
 
 
         // testing purposes only, should be bounded by if statements

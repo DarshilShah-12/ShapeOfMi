@@ -4,7 +4,6 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.rienwave.exerciseanalyzer.Events.onTrackerBackClickiEvent;
 import com.example.rienwave.exerciseanalyzer.Events.onTrendsBackClickEvent;
 import com.example.rienwave.exerciseanalyzer.R;
 import com.example.rienwave.exerciseanalyzer.ViewModel.trends_ViewModel;

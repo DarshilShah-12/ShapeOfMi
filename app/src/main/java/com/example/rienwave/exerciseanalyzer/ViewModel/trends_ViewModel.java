@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
 
+import com.example.rienwave.exerciseanalyzer.Activities.CounterActivity;
 import com.example.rienwave.exerciseanalyzer.Activities.sit_up_count_Activity;
-import com.example.rienwave.exerciseanalyzer.Events.onTrackerBackClickiEvent;
 import com.example.rienwave.exerciseanalyzer.Events.onTrendsBackClickEvent;
 import com.example.rienwave.exerciseanalyzer.Model.trends_Model;
 import com.jjoe64.graphview.series.DataPoint;
@@ -40,7 +40,7 @@ public class trends_ViewModel extends BaseObservable{
     }
 
     public void onTrackerButtonClick(){
-        Intent Invoker = new Intent(ActivityContext, sit_up_count_Activity.class);
+        Intent Invoker = new Intent(ActivityContext, CounterActivity.class);
         ActivityContext.startActivity(Invoker);
     }
 }
