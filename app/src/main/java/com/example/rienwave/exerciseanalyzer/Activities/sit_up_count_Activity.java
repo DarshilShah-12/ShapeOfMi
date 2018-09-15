@@ -17,12 +17,6 @@ public class sit_up_count_Activity extends AppCompatActivity {
     SitUpCountViewBinding mainBinding;
     sit_up_count_ViewModel StiUpCountViewModel;
 
-    public String text_Counter;
-
-    public String StartStopbtnText;
-
-    public int testCounter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +29,6 @@ public class sit_up_count_Activity extends AppCompatActivity {
 
         EventBus.getDefault().register(this);
     }
-
 
     // listens for activity change events raised from the view model
     @Subscribe

@@ -17,16 +17,11 @@ public class MainActivityViewModel extends BaseObservable {
         ActivityContext = context;
     }
 
-        public void onbtnTrackerClick() {
-            Intent Invoker = new Intent(ActivityContext, sit_up_count_Activity.class);
-            ActivityContext.startActivity(Invoker);
-        }
-
         public void onbtnTrendsClick() {
             Intent Invoker = new Intent(ActivityContext, trends_Activity.class);
             ActivityContext.startActivity(Invoker);
         }
-        public void onbtnTabsClick(){
+        public void onbtnTrackerClick(){
             Intent Invoker = new Intent(ActivityContext, CounterActivity.class);
             ActivityContext.startActivity(Invoker);
         }

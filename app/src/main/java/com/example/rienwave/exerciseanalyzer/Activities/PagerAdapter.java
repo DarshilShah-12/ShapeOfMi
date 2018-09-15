@@ -1,4 +1,5 @@
 // Acknowledgement: https://www.truiton.com/2015/06/android-tabs-example-fragments-viewpager/
+
 package com.example.rienwave.exerciseanalyzer.Activities;
 
 import android.content.Context;

@@ -103,6 +103,9 @@ public class push_up_count_Model implements SensorEventListener {
         }
     }
 
+    public void ClearCount(){
+        setCounter(0);
+    }
 
     private void Analyze (){
 

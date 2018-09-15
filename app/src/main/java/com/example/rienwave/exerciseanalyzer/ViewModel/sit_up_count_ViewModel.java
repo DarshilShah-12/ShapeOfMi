@@ -6,6 +6,7 @@ import android.databinding.Bindable;
 
 import com.example.rienwave.exerciseanalyzer.BR;
 import com.example.rienwave.exerciseanalyzer.Events.CounterChangedEvent;
+import com.example.rienwave.exerciseanalyzer.Events.onPushUpDetailsVisibilityChanged;
 import com.example.rienwave.exerciseanalyzer.Model.sit_up_count_Model;
 import com.example.rienwave.exerciseanalyzer.Events.onTrackerBackClickEvent;
 
@@ -16,7 +17,6 @@ public class sit_up_count_ViewModel extends BaseObservable {
 
     private String text_Counter;
     private String StartStopbtnText;
-
     private sit_up_count_Model sitUpCountModel;
 
     public sit_up_count_ViewModel(Context context){
@@ -59,5 +59,14 @@ public class sit_up_count_ViewModel extends BaseObservable {
     public void setStartStopbtnText(String startStopbtnText) {
         StartStopbtnText = startStopbtnText;
         notifyPropertyChanged(BR.startStopbtnText);
+    }
+
+    public void onfabClearClick(){
+        sitUpCountModel.ClearCount();
+    }
+
+    public void onDetailsbtnClick() {
+        onPushUpDetailsVisibilityChanged event = new onPushUpDetailsVisibilityChanged();
+        EventBus.getDefault().post(event);
     }
 }

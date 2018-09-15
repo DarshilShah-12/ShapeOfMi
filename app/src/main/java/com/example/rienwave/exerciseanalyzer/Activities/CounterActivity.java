@@ -1,3 +1,5 @@
+// Acknowledgement: https://www.truiton.com/2015/06/android-tabs-example-fragments-viewpager/
+
 package com.example.rienwave.exerciseanalyzer.Activities;
 
 import android.support.design.widget.TabLayout;
@@ -8,7 +10,10 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
+import com.example.rienwave.exerciseanalyzer.Events.onPushUpDetailsVisibilityChanged;
 import com.example.rienwave.exerciseanalyzer.Events.onTrackerBackClickEvent;
 import com.example.rienwave.exerciseanalyzer.R;
 
@@ -16,6 +21,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 public class CounterActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +55,7 @@ public class CounterActivity extends AppCompatActivity {
 
             }
         });
+
         EventBus.getDefault().register(this);
     }
 
