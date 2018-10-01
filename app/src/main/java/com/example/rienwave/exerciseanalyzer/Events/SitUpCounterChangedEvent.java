@@ -1,6 +1,6 @@
 package com.example.rienwave.exerciseanalyzer.Events;
 
-public class CounterChangedEvent {
+public class SitUpCounterChangedEvent {
 
     private String Value;
 
