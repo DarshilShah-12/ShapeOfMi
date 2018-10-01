@@ -5,16 +5,14 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.example.rienwave.exerciseanalyzer.BR;
-import com.example.rienwave.exerciseanalyzer.Events.CounterChangedEvent;
+import com.example.rienwave.exerciseanalyzer.Events.PushUpCounterChangedEvent;
+import com.example.rienwave.exerciseanalyzer.Events.SitUpCounterChangedEvent;
 import com.example.rienwave.exerciseanalyzer.Events.onPushUpDetailsVisibilityChanged;
 import com.example.rienwave.exerciseanalyzer.Events.onTrackerBackClickEvent;
 import com.example.rienwave.exerciseanalyzer.Model.push_up_count_Model;
-import com.example.rienwave.exerciseanalyzer.R;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-import android.view.View;
-import android.widget.TextView;
 
 public class push_up_count_ViewModel extends BaseObservable{
     private String text_Counter;
@@ -36,7 +34,7 @@ public class push_up_count_ViewModel extends BaseObservable{
     };
 
     @Subscribe
-    public void onCounterChanged(CounterChangedEvent event){
+    public void onCounterChanged(PushUpCounterChangedEvent event){
         setText_Counter(event.getValue());
     }
 

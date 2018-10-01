@@ -6,7 +6,8 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-import com.example.rienwave.exerciseanalyzer.Events.CounterChangedEvent;
+import com.example.rienwave.exerciseanalyzer.Events.PushUpCounterChangedEvent;
+import com.example.rienwave.exerciseanalyzer.Events.SitUpCounterChangedEvent;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -67,7 +68,7 @@ public class push_up_count_Model implements SensorEventListener {
 
     public void setCounter(int counter) {
         this.counter = counter;
-        CounterChangedEvent event = new CounterChangedEvent();
+        PushUpCounterChangedEvent event = new PushUpCounterChangedEvent();
         event.setValue("" + this.counter);
         EventBus.getDefault().post(event);
     }
@@ -112,38 +113,23 @@ public class push_up_count_Model implements SensorEventListener {
         // ToDO determine if text_Counter needs to be incremented
         // TODO clear the ArrayLIst with every new sit-up
 
-        IncrementCounter();
-        boolean ExType=true; //true for push up; false for situp;
-
-        //DO NOT DELETE: PUSH UP COUNTER WORKS: -ANJALI
-        if (ExType)
-        {
-            double avZ=0;
-            if (AzVal.size()==500){
-                for (int i=0; i<AzVal.size(); i++){
-                    avZ+=AzVal.get(i);
-                }
-
-                avZ/=AzVal.size();
-
-                if (avZ<9.8){
-                    IncrementCounter();
-                }
-
-                AzVal.clear();
+        //IncrementCounter();
+        double avZ=0;
+        if (AzVal.size()==500){
+            for (int i=0; i<AzVal.size(); i++){
+                avZ+=AzVal.get(i);
             }
 
-        }
-        else{
-            //situp
-            if (AyVal.size()>500){
-                if ((AzVal.get(AzVal.size()-1)<0.5&& AzVal.get(AzVal.size()-1)>-0.5)&&(AyVal.get(AyVal.size()-1)<10&&AyVal.get(AyVal.size()-1)>9)){
-                    IncrementCounter();
-                    AyVal.clear();
-                }
-            }
-        }
+            avZ/=AzVal.size();
 
+            if (avZ<9.8){
+                IncrementCounter();
+            }
+
+            AzVal.clear();
+            AxVal.clear();
+            AyVal.clear();
+        }
 
         // testing purposes only, should be bounded by if statements
 
