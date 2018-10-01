@@ -2,6 +2,7 @@ package com.example.rienwave.exerciseanalyzer.Model;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.ArrayAdapter;
@@ -96,9 +97,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public static int[] getData() {
+    public Cursor getData() {
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM users_table", null);
         int[] a = {1,2};
-        return a;
+        return c;
+    }
+
+    public Cursor getPushUps() {
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM data_table WHERE TYPE='Push Ups'", null);
+        return c;
     }
 
 //    public static ArrayList<ArrayList<Integer>> getSomeData() {
