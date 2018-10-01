@@ -1,9 +1,15 @@
 package com.example.rienwave.exerciseanalyzer.Model;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
 import com.example.rienwave.exerciseanalyzer.Activities.MainActivity;
 import com.example.rienwave.exerciseanalyzer.Model.DatabaseHelper;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+
+import static android.content.ContentValues.TAG;
 
 public class trends_Model{
 
@@ -23,9 +29,14 @@ public class trends_Model{
 //                new DataPoint(3, 2),
 //                new DataPoint(4, 6)
         });
-        for(int i = 0; i < DatabaseHelper.getData().length; i++) {
-            int y = DatabaseHelper.getData()[i];
-            SeriesAvg.appendData(new DataPoint(i,y),true, 256);
+        Cursor cursor = MainActivity.myDb.getPushUps();
+        int count = 0;
+        if(cursor.moveToFirst()) {
+            while (cursor.moveToNext()) {
+                count++;
+                int y = cursor.getInt(3);
+                SeriesAvg.appendData(new DataPoint(count, y), true, 256);
+            }
         }
     }
 
