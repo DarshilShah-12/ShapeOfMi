@@ -13,33 +13,55 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/btn_Trends"
-            android:layout_width="104dp"
-            android:layout_height="62dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="228dp"
-            android:layout_marginStart="63dp"
-            android:onClick="@{() -> ViewModel.onbtnTrendsClick()}"
-            android:text="Trends"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.692"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.989" />
-
-        <Button
             android:id="@+id/btnTracker"
             android:layout_width="105dp"
-            android:layout_height="60dp"
+            android:layout_height="62dp"
             android:onClick="@{() -> ViewModel.onbtnTrackerClick()}"
             android:text="Trackers"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.199"
+            app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.611" />
+            app:layout_constraintVertical_bias="0.891" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="173dp"
+            android:layout_height="170dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.287"
+            app:srcCompat="@drawable/main_logo" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="112dp"
+            android:layout_height="104dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:onClick="@{() -> ViewModel.onbtnTrendsClick()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.208"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.692"
+            app:srcCompat="@drawable/trends" />
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/counter"
+            android:onClick="@{() -> ViewModel.onbtnTrackerClick()}"
+            tools:layout_editor_absoluteX="206dp"
+            tools:layout_editor_absoluteY="323dp" />
+
     </android.support.constraint.ConstraintLayout>
 </layout>
