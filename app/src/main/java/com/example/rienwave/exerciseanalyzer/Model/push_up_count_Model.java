@@ -132,7 +132,6 @@ public class push_up_count_Model implements SensorEventListener {
         }
 
         // testing purposes only, should be bounded by if statements
-
     }
 
     public void onStartStopClick(){

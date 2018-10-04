@@ -12,19 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnTracker"
-            android:layout_width="105dp"
-            android:layout_height="62dp"
-            android:onClick="@{() -> ViewModel.onbtnTrackerClick()}"
-            android:text="Trackers"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.666"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.891" />
-
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="173dp"
@@ -56,12 +43,20 @@
 
         <ImageButton
             android:id="@+id/imageButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/counter"
+            android:layout_width="116dp"
+            android:layout_height="105dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:onClick="@{() -> ViewModel.onbtnTrackerClick()}"
-            tools:layout_editor_absoluteX="206dp"
-            tools:layout_editor_absoluteY="323dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.744"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.697"
+            app:srcCompat="@drawable/counter" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>
