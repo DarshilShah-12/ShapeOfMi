@@ -127,6 +127,7 @@ public class sit_up_count_Model implements SensorEventListener{
                     myDb.insertUser("fakename1", "fake_username1", "fake_password_1");
                     myDb.insertDateTime(1, date);
                     myDb.insertDateTime(2, date);
+
                     myDb.insertData(1,"Sit Ups", this.counter,1, date);
                     myDb.insertData(1,"Push Ups", 300, 2, date);
                     AyVal.clear();
@@ -149,6 +150,10 @@ public class sit_up_count_Model implements SensorEventListener{
             gsensorM.registerListener(this, gSensor, SensorManager.SENSOR_DELAY_FASTEST);
         }
         hasStarted = !hasStarted;
+    }
+
+    public void onStopClick(){
+        counter = 0;
     }
 
     // not applicable

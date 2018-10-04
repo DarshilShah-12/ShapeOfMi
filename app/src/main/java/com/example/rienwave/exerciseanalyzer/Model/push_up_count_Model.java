@@ -147,6 +147,10 @@ public class push_up_count_Model implements SensorEventListener {
         hasStarted = !hasStarted;
     }
 
+    public void onStopClick(){
+        counter = 0;
+    }
+
     // not applicable
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {    }

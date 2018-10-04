@@ -43,6 +43,11 @@ public class push_up_count_ViewModel extends BaseObservable{
         setStartStopbtnText(pushUpCountModel.getHasStarted() ? "Stop" : "Start");
     }
 
+    public void onStopClick(){
+        pushUpCountModel.onStopClick();
+    }
+
+
     public void onBackButtonClick(){
         onTrackerBackClickEvent event = new onTrackerBackClickEvent();
         EventBus.getDefault().post(event);

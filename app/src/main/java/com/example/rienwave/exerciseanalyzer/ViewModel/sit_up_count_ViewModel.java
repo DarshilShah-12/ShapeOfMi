@@ -65,6 +65,10 @@ public class sit_up_count_ViewModel extends BaseObservable {
         sitUpCountModel.ClearCount();
     }
 
+    public void onStopClick(){
+        sitUpCountModel.onStopClick();
+    }
+
     public void onDetailsbtnClick() {
         onPushUpDetailsVisibilityChanged event = new onPushUpDetailsVisibilityChanged();
         EventBus.getDefault().post(event);
