@@ -6,11 +6,15 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
+import com.example.rienwave.exerciseanalyzer.Activities.MainActivity;
 import com.example.rienwave.exerciseanalyzer.Events.SitUpCounterChangedEvent;
+import com.example.rienwave.exerciseanalyzer.ViewModel.MainActivityViewModel;
+import com.example.rienwave.exerciseanalyzer.Model.DatabaseHelper;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static android.content.Context.SENSOR_SERVICE;
@@ -34,6 +38,8 @@ public class sit_up_count_Model implements SensorEventListener{
 
     public int counter;
     public Boolean hasStarted;
+
+    public static DatabaseHelper myDb;
 
 
     public sit_up_count_Model(Context context){
@@ -59,6 +65,7 @@ public class sit_up_count_Model implements SensorEventListener{
 
         gsensorM = (SensorManager) context.getSystemService(SENSOR_SERVICE);
         gSensor = gsensorM.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+        myDb = new DatabaseHelper(context);
 
     }
 
@@ -116,6 +123,12 @@ public class sit_up_count_Model implements SensorEventListener{
             if (AyVal.size() > 500) {
                 if ((AzVal.get(AzVal.size() - 1) < 0.5 && AzVal.get(AzVal.size() - 1) > -0.5) && (AyVal.get(AyVal.size() - 1) < 10 && AyVal.get(AyVal.size() - 1) > 9)) {
                     IncrementCounter();
+                    Date date = new Date(System.currentTimeMillis() - 3600 * 4000);
+                    myDb.insertUser("fakename1", "fake_username1", "fake_password_1");
+                    myDb.insertDateTime(1, date);
+                    myDb.insertDateTime(2, date);
+                    myDb.insertData(1,"Sit Ups", this.counter,1, date);
+                    myDb.insertData(1,"Push Ups", 300, 2, date);
                     AyVal.clear();
                     AxVal.clear();
                     AzVal.clear();

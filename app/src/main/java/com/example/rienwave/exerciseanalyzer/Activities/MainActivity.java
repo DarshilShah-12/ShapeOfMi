@@ -20,10 +20,6 @@ import java.time.LocalDateTime;
 
 //VM for activity_main
 public class MainActivity extends AppCompatActivity {
-    Date date = new Date(System.currentTimeMillis() - 3600 * 4000);
-//    Date currentDate = new Date(System.currentTimeMillis() - 3600 * 4000)
-
-    public static DatabaseHelper myDb;
     EditText editName, editUsername, editPassword;
     Button buttonAddUser;
 
@@ -35,17 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        myDb = new DatabaseHelper(this);
-        myDb.insertUser("fakename1", "fake_username1", "fake_password_1");
-        myDb.insertDateTime(1, date);
-        myDb.insertDateTime(2, date);
-        myDb.insertData(1,"Sit Ups", 3,1, date);
-        myDb.insertData(1,"Push Ups", 300, 2, date);
-//        editName = (EditText) findViewById(R.id.editName);
-//        editUsername = (EditText) findViewById(R.id.editUsername);
-//        editPassword = (EditText) findViewById(R.id.editPassword);
-//        buttonAddUser = (Button) findViewById(R.id.buttonAddUser);
-//        AddData();
+
         initialize();
     }
 

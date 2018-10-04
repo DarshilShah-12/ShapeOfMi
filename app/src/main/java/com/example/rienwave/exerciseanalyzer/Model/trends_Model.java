@@ -4,7 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.rienwave.exerciseanalyzer.Activities.MainActivity;
+import com.example.rienwave.exerciseanalyzer.Model.sit_up_count_Model;
 import com.example.rienwave.exerciseanalyzer.Model.DatabaseHelper;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -29,7 +29,7 @@ public class trends_Model{
 //                new DataPoint(3, 2),
 //                new DataPoint(4, 6)
         });
-        Cursor cursor = MainActivity.myDb.getPushUps();
+        Cursor cursor = sit_up_count_Model.myDb.getPushUps();
         int count = 0;
         if(cursor.moveToFirst()) {
             while (cursor.moveToNext()) {
