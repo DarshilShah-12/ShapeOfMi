@@ -29,7 +29,7 @@ public class trends_Model{
 //                new DataPoint(3, 2),
 //                new DataPoint(4, 6)
         });
-        Cursor cursor = sit_up_count_Model.myDb.getPushUps();
+        Cursor cursor = sit_up_count_Model.myDb.getSitUps();
         int count = 0;
         if(cursor.moveToFirst()) {
             while (cursor.moveToNext()) {

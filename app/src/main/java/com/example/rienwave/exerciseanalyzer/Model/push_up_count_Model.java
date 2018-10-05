@@ -152,6 +152,7 @@ public class push_up_count_Model implements SensorEventListener {
     }
 
     // not applicable
+
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {    }
 }

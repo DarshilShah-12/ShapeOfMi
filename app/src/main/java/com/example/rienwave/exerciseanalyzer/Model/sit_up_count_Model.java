@@ -123,13 +123,6 @@ public class sit_up_count_Model implements SensorEventListener{
             if (AyVal.size() > 500) {
                 if ((AzVal.get(AzVal.size() - 1) < 0.5 && AzVal.get(AzVal.size() - 1) > -0.5) && (AyVal.get(AyVal.size() - 1) < 10 && AyVal.get(AyVal.size() - 1) > 9)) {
                     IncrementCounter();
-                    Date date = new Date(System.currentTimeMillis() - 3600 * 4000);
-                    myDb.insertUser("fakename1", "fake_username1", "fake_password_1");
-                    myDb.insertDateTime(1, date);
-                    myDb.insertDateTime(2, date);
-
-                    myDb.insertData(1,"Sit Ups", this.counter,1, date);
-                    myDb.insertData(1,"Push Ups", 300, 2, date);
                     AyVal.clear();
                     AxVal.clear();
                     AzVal.clear();
@@ -153,9 +146,15 @@ public class sit_up_count_Model implements SensorEventListener{
     }
 
     public void onStopClick(){
-        counter = 0;
-    }
+        Date date = new Date(System.currentTimeMillis() - 3600 * 4000);
+        myDb.insertUser("fakename1", "fake_username1", "fake_password_1");
+        myDb.insertDateTime(1, date);
+        myDb.insertDateTime(2, date);
 
+        myDb.insertData(1,"Sit Ups", this.counter,1, date);
+        myDb.insertData(1,"Push Ups", 300, 2, date);
+        setCounter(0);
+    }
     // not applicable
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {    }

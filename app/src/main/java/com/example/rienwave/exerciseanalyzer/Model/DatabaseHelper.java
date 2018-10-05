@@ -110,6 +110,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return c;
     }
 
+    public Cursor getSitUps() {
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM data_table WHERE TYPE='Sit Ups'", null);
+        return c;
+    }
+
 //    public static ArrayList<ArrayList<Integer>> getSomeData() {
 //        ArrayList<Integer> inside_sample = new ArrayList<Integer>();
 //        ArrayList<Integer> inside_sample_2 = new ArrayList<Integer>();
