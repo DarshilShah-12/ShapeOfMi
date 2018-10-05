@@ -40,7 +40,7 @@ public class sit_up_count_Model implements SensorEventListener{
     public Boolean hasStarted;
 
     public static DatabaseHelper myDb;
-
+    boolean hasFlat = false;
 
     public sit_up_count_Model(Context context){
         init(context);
@@ -116,19 +116,24 @@ public class sit_up_count_Model implements SensorEventListener{
     }
 
     private void Analyze (){
-
         // ToDO determine if text_Counter needs to be incremented
         // TODO clear the ArrayLIst with every new sit-up
 
-            if (AyVal.size() > 500) {
-                if ((AzVal.get(AzVal.size() - 1) < 0.5 && AzVal.get(AzVal.size() - 1) > -0.5) && (AyVal.get(AyVal.size() - 1) < 10 && AyVal.get(AyVal.size() - 1) > 9)) {
-                    IncrementCounter();
-                    AyVal.clear();
-                    AxVal.clear();
-                    AzVal.clear();
-                }
-            }
+        if (AyVal.size() > 200) {
 
+            /*for (int i = 0; i < AzVal.size(); i++) {
+                if (Math.abs(AzVal.get(i)) > 9 && Math.abs(AzVal.get(i))< 10.5)
+                    hasFlat = true;
+            }*/
+
+            if (/*hasFlat && */(AzVal.get(AzVal.size() - 1) < 0.5 && AzVal.get(AzVal.size() - 1) > -0.5) && (AyVal.get(AyVal.size() - 1) < 10 && AyVal.get(AyVal.size() - 1) > 9)) {
+                //hasFlat = false;
+                IncrementCounter();
+                AyVal.clear();
+                AxVal.clear();
+                AzVal.clear();
+            }
+        }
         // testing purposes only, should be bounded by if statements
     }
 

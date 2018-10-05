@@ -34,7 +34,9 @@ public class push_up_count_Model implements SensorEventListener {
 
     public int counter;
     public Boolean hasStarted;
-
+    private double avZ;
+    private boolean isflat;
+    private boolean isLastFlat;
 
     public push_up_count_Model(Context context){
         init(context);
@@ -53,13 +55,15 @@ public class push_up_count_Model implements SensorEventListener {
         SensorInfo = new ArrayList<ArrayList<Double>>(6);
 
         hasStarted = false;
+        isLastFlat = false;
 
         asensorM = (SensorManager) context.getSystemService(SENSOR_SERVICE);
         aSensor = asensorM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         gsensorM = (SensorManager) context.getSystemService(SENSOR_SERVICE);
         gSensor = gsensorM.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
-
+        avZ = 0;
+        isflat = false;
     }
 
     public int getCounter() {
@@ -114,25 +118,45 @@ public class push_up_count_Model implements SensorEventListener {
         // TODO clear the ArrayLIst with every new sit-up
 
         //IncrementCounter();
-        double avZ=0;
-        if (AzVal.size()==500){
-            for (int i=0; i<AzVal.size(); i++){
-                avZ+=AzVal.get(i);
+
+        //boolean hasFlat = false;
+
+        if (AzVal.size() > 200) {
+
+            for (int i = 0; i < AzVal.size(); i++) {
+                avZ += AzVal.get(i);
+                //if (AzVal.get(i) > 9.5 && Math.abs(AzVal.get(i))< 10)
+                    //hasFlat = true;
             }
 
-            avZ/=AzVal.size();
+            avZ /= AzVal.size();
 
-            if (avZ<9.8){
+            if (avZ < 9.8 /*&& hasFlat*/) {
                 IncrementCounter();
             }
+
+            /*if (Math.abs(AzVal.get(AzVal.size()-1)) > 8.5 && Math.abs(AzVal.get(AzVal.size()-1)) < 10.5) {
+                isflat = true;
+                isLastFlat = isflat;
+            }
+            else {
+                if (isflat && isflat == isLastFlat) {
+                    IncrementCounter();
+                    isflat = false;
+                }else {
+                    isLastFlat = isflat;
+                }
+            }*/
+            avZ = 0;
 
             AzVal.clear();
             AxVal.clear();
             AyVal.clear();
         }
+    }
 
         // testing purposes only, should be bounded by if statements
-    }
+
 
     public void onStartStopClick(){
         if (hasStarted){
